@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  body {
+    @apply bg-ink text-slate-100;
+  }
+  h1, h2, h3, h4 {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: theme(colors.accent);
+    color: theme(colors.ink);
+  }
+  :focus-visible {
+    outline: 2px solid theme(colors.accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Flat operational panel -- hairline border, minimal radius, no drop shadow soup */
+  .panel {
+    @apply bg-surface border border-line rounded;
+  }
+
+  .panel-light {
+    @apply bg-white border border-lineSoft rounded text-ink;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded font-body font-medium text-sm
+           transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-orange-600;
+  }
+  .btn-secondary {
+    @apply btn bg-surfaceRaised text-slate-100 border border-line hover:border-slate-500;
+  }
+  .btn-ghost {
+    @apply btn text-slate-300 hover:text-white hover:bg-surfaceRaised;
+  }
+
+  .field-label {
+    @apply block text-xs font-medium uppercase tracking-wide text-slate-400 mb-1.5;
+  }
+  .field-input {
+    @apply w-full bg-surfaceRaised border border-line rounded px-3 py-2 text-sm text-slate-100
+           placeholder:text-slate-500 focus:border-accent transition-colors;
+  }
+  .field-select {
+    @apply field-input;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm text-xs font-mono uppercase tracking-wide;
+  }
+  .status-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded text-sm text-slate-400 hover:text-white hover:bg-surfaceRaised transition-colors;
+  }
+  .nav-link-active {
+    @apply nav-link text-white bg-surfaceRaised border-l-2 border-accent;
+  }
+}
